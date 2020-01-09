@@ -8,6 +8,14 @@
 # that illusion. A fun project indeed.
 
 
+# Structure
+# - initial state: either randomly generated or let user specify
+# - a evolve function: input a matrix that represent the living thing, and
+#   calculate how each element should behave according to the set of rules
+# - a loop: to interate this evolution process
+# - a image generation function: to output the evolved matrix after each 
+#   iteration.
+
 
 import numpy
 import pil
@@ -15,6 +23,7 @@ import random
 
 class GameOfLife:
 
-    def __init__(self, N=100, T=200):
-        """ set up conway's game of life """
+    def __init__(self):
+        """ initial state """
+        
         
