@@ -53,50 +53,56 @@ class GameOfLife:
             if coord[0] == 0:
                 # top row
                 if coord[1] == 0:
+                    # left most
                     neighbor_sum = \
                     population_buffer[coord[0], coord[1] + 1] + \
-                    sum(population_buffer[coord[0] + 1, coord[1]:(coord[1]+1)])
+                    sum(population_buffer[coord[0] + 1, coord[1]:(coord[1]+2)])
                 elif coord[1] == j - 1:
+                    # right most
                     neighbor_sum = \
                     population_buffer[coord[0], coord[1] - 1] + \
-                    sum(population_buffer[coord[0] + 1, (coord[1]-1):coord[1]])
+                    sum(population_buffer[coord[0] + 1, (coord[1]-1):(coord[1]+1)])
                 else:
                     neighbor_sum = \
                     population_buffer[coord[0], coord[1] - 1] + \
                     population_buffer[coord[0], coord[1] + 1] + \
-                    sum(population_buffer[coord[0] + 1, (coord[1] - 1):(coord[1]+1)])
+                    sum(population_buffer[coord[0] + 1, (coord[1] - 1):(coord[1]+2)])
             elif coord[0] == i - 1:
                 # bottom row
                 if coord[1] == 0:
+                    # left most
                     neighbor_sum = \
                     population_buffer[coord[0], coord[1] + 1] + \
-                    sum(population_buffer[coord[0] - 1, coord[1]:(coord[1]+1)])
+                    sum(population_buffer[coord[0] - 1, coord[1]:(coord[1]+2)])
                 elif coord[1] == j - 1:
+                    # right most
                     neighbor_sum = \
                     population_buffer[coord[0], coord[1] - 1] + \
-                    sum(population_buffer[coord[0] - 1, (coord[1]-1):coord[1]])
+                    sum(population_buffer[coord[0] - 1, (coord[1]-1):(coord[1]+1)])
                 else:
                     neighbor_sum = \
                     population_buffer[coord[0], coord[1] - 1] + \
                     population_buffer[coord[0], coord[1] + 1] + \
-                    sum(population_buffer[coord[0] - 1, (coord[1] - 1):(coord[1]+1)])
+                    sum(population_buffer[coord[0] - 1, (coord[1] - 1):(coord[1]+2)])
             else:
                 if coord[1] == 0:
+                    # left most
                     neighbor_sum = \
-                    sum(population_buffer[coord[0] - 1, (coord[1]):(coord[1]+1)]) + \
+                    sum(population_buffer[coord[0] - 1, (coord[1]):(coord[1]+2)]) + \
                     population_buffer[coord[0], coord[1] + 1] + \
-                    sum(population_buffer[coord[0] + 1, (coord[1]):(coord[1]+1)])
+                    sum(population_buffer[coord[0] + 1, (coord[1]):(coord[1]+2)])
                 elif coord[1] == j - 1:
-                    neighbor_sum = \
-                    sum(population_buffer[coord[0] - 1, (coord[1] - 1):(coord[1])]) + \
-                    population_buffer[coord[0], coord[1] - 1] + \
-                    sum(population_buffer[coord[0] + 1, (coord[1] - 1):(coord[1])])
-                else:
+                    # right most
                     neighbor_sum = \
                     sum(population_buffer[coord[0] - 1, (coord[1] - 1):(coord[1]+1)]) + \
                     population_buffer[coord[0], coord[1] - 1] + \
-                    population_buffer[coord[0], coord[1] + 1] + \
                     sum(population_buffer[coord[0] + 1, (coord[1] - 1):(coord[1]+1)])
+                else:
+                    neighbor_sum = \
+                    sum(population_buffer[coord[0] - 1, (coord[1] - 1):(coord[1]+2)]) + \
+                    population_buffer[coord[0], coord[1] - 1] + \
+                    population_buffer[coord[0], coord[1] + 1] + \
+                    sum(population_buffer[coord[0] + 1, (coord[1] - 1):(coord[1]+2)])
 
             # apply rules now
             if self.population[coord[0], coord[1]] == 1:
