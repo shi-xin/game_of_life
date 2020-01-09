@@ -1,4 +1,4 @@
-# testing image output libraries
+# testing 2d image output libraries
 # matplotlib
 # this does the basic job: produce and refresh the plot with new data
 
@@ -18,3 +18,4 @@ for i in range(100):
     ax.imshow(image, cmap = plt.cm.gray)
     fig.canvas.draw()
     plt.pause(0.1)
+    
